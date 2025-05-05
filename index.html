@@ -10,9 +10,21 @@
         <input id="cityInput" type="text" placeholder="Enter City Name">
         <button id="SearchButton">Search</button>
     </div>
+    <div>
+        <h1 id="cityname">a</h1>
+        <p id="citytime">b</p>
+        <p id="citytemp">c</p>
+    </div>
+
+
     <script>
         let searchbutton = document.getElementById('SearchButton')
         let cityInput = document.getElementById('cityInput')
+
+        const cityName = document.getElementById('cityname')
+        const cityTime = document.getElementById('citytime')
+        const cityTemp = document.getElementById('citytemp') 
+
         async function getData(cityInput) {
             const weatherApi = await fetch(`http://api.weatherapi.com/v1/current.json?key=e21c60d9939f4136b32164327250505&q=${cityInput}&aqi=no`)
             return await weatherApi.json()
@@ -24,6 +36,9 @@
             const value = cityInput.value
             const result = await getData(value)
             console.log(result)
+            cityName.innerText = `${result.location.name}, ${result.location.region}`
+            cityTime.innerText = result.location.localtime
+            cityTemp.innerText = result.current.temp_c
         })
     </script>
 </body>

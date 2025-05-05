@@ -14,7 +14,8 @@
         let searchbutton = document.getElementById('SearchButton')
         let cityInput = getElementById('cityInput')
         async function getData() {
-            const weatherApi = fetch(`http://api.weatherapi.com/v1/current.json?key=e21c60d9939f4136b32164327250505&q=${cityInput}&aqi=no`)
+            const weatherApi = await fetch(`http://api.weatherapi.com/v1/current.json?key=e21c60d9939f4136b32164327250505&q=${cityInput}&aqi=no`)
+            return weatherApi.json()
         }
 
         searchbutton.addEventListener('click', () => {

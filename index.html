@@ -7,13 +7,20 @@
 </head>
 <body>
     <div>
-        <input type="text" placeholder="Enter City Name">
+        <input id="cityInput" type="text" placeholder="Enter City Name">
         <button id="SearchButton">Search</button>
     </div>
     <script>
         let searchbutton = document.getElementById('SearchButton')
+        let cityInput = getElementById('cityInput')
+        async function getData() {
+            const weatherApi = fetch(`http://api.weatherapi.com/v1/current.json?key=e21c60d9939f4136b32164327250505&q=${cityInput}&aqi=no`)
+        }
+
         searchbutton.addEventListener('click', () => {
-            alert("Hello Saurav")
+            // alert("Hello Saurav")
+            // console.log(cityInput.value)
+            
         })
     </script>
 </body>

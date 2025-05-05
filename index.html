@@ -12,16 +12,18 @@
     </div>
     <script>
         let searchbutton = document.getElementById('SearchButton')
-        let cityInput = getElementById('cityInput')
-        async function getData() {
+        let cityInput = document.getElementById('cityInput')
+        async function getData(cityInput) {
             const weatherApi = await fetch(`http://api.weatherapi.com/v1/current.json?key=e21c60d9939f4136b32164327250505&q=${cityInput}&aqi=no`)
-            return weatherApi.json()
+            return await weatherApi.json()
         }
 
-        searchbutton.addEventListener('click', () => {
+        searchbutton.addEventListener('click', async () => {
             // alert("Hello Saurav")
             // console.log(cityInput.value)
-            
+            const value = cityInput.value
+            const result = await getData(value)
+            console.log(result)
         })
     </script>
 </body>
